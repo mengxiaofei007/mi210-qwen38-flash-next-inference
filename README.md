@@ -149,6 +149,7 @@ mi210-qwen38-flash-next-inference/
 │   ├── hardware.md                  # 硬件信息、拓扑、NUMA、驱动
 │   ├── software-versions.md         # 软件版本清单与来源
 │   ├── deployment.md                # 分步部署手册（含 AUR 自动更新器）
+│   ├── bring-your-own.md            # 已有 Studio / 手动安装者的参数对齐指南
 │   ├── benchmarks.md                # 真实性能数据与测量方法
 │   ├── limits.md                    # 上限/下限/边界条件
 │   ├── inference-flags.md           # llama-server 参数逐项解读
@@ -175,6 +176,7 @@ mi210-qwen38-flash-next-inference/
 | [docs/hardware.md](docs/hardware.md) | CPU / GPU / 内存 / NUMA / 驱动 / 磁盘 |
 | [docs/software-versions.md](docs/software-versions.md) | 所有软件版本、来源、pin 原因 |
 | [docs/deployment.md](docs/deployment.md) | 从零部署到常驻服务的完整步骤 |
+| [docs/bring-your-own.md](docs/bring-your-own.md) | 已有 Studio / 手动安装者如何调参达到本仓库效果 |
 | [docs/benchmarks.md](docs/benchmarks.md) | DSH 真实会话中采集的 tok/s、上下文、显存占用与测量脚本 |
 | [docs/limits.md](docs/limits.md) | 能力上限、硬下限、边界条件 |
 | [docs/inference-flags.md](docs/inference-flags.md) | 87 参原始命令行与逐项解读 |
