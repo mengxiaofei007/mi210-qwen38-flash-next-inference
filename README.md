@@ -31,10 +31,15 @@
 |---|---|
 | 这套配置是干什么的 | 在一张 MI210 上，以 Web UI + OpenAI 兼容 API 的形式，提供 Qwen3.8-Flash-Next 的 180k 长上下文推理 |
 | 显存放不下 200 GB 模型怎么办 | 主权重 MoE 前 12 层留 CPU + 4 GiB 显存热缓存；102 GB 的 engram 外挂用 DirectIO + lazy 按需读盘 |
-| 实测生成速度 | 交互生成 **约 30–45 tok/s**（中位 ~31）；投机解码命中时可达 100+ tok/s；长 prompt 处理 200–600+ tok/s。见 [benchmarks.md](docs/benchmarks.md) |
+| 实测生成速度 | DSH 真实会话中交互生成 **中位 ~25 tok/s**（p10–p90 为 19–41 tok/s）；长 prompt 处理中位 ~210 tok/s。见 [benchmarks.md](docs/benchmarks.md) |
 | 上限 | 180k 上下文、4 并发槽位、~200 GB 模型文件常驻磁盘、整机 62 GiB 内存 |
 | 下限 / 硬约束 | 必须 gfx90a + ROCm 10.2；整机内存 < 62 GiB 需重算 `MemoryMax`；**没有视觉能力**；单卡，不支持多卡并行 |
 | 不适合谁 | 没有 MI210/gfx90a 的用户、想开箱跑多模态的用户、内存 < 48 GiB 的机器 |
+
+> **性能数据出处**：本文及 [benchmarks.md](docs/benchmarks.md) 中的 tok/s 数字，全部来自
+> **DeepSeek Harness（DSH）编码智能体的实际使用过程**——作者把这套服务作为 DSH 后端，
+> 在真实的代码编写、文件读写、多轮对话与工具调用任务中产生的 llama-server 日志，经聚合统计得出；
+> 不是压测脚本的合成数据。
 
 > 详细的上限/下限与「什么时候会出问题」见 [docs/limits.md](docs/limits.md)。
 
@@ -170,7 +175,7 @@ mi210-qwen38-flash-next-inference/
 | [docs/hardware.md](docs/hardware.md) | CPU / GPU / 内存 / NUMA / 驱动 / 磁盘 |
 | [docs/software-versions.md](docs/software-versions.md) | 所有软件版本、来源、pin 原因 |
 | [docs/deployment.md](docs/deployment.md) | 从零部署到常驻服务的完整步骤 |
-| [docs/benchmarks.md](docs/benchmarks.md) | 实测 tok/s、上下文、显存占用与测量脚本 |
+| [docs/benchmarks.md](docs/benchmarks.md) | DSH 真实会话中采集的 tok/s、上下文、显存占用与测量脚本 |
 | [docs/limits.md](docs/limits.md) | 能力上限、硬下限、边界条件 |
 | [docs/inference-flags.md](docs/inference-flags.md) | 87 参原始命令行与逐项解读 |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | OOM / 500 / 无视觉 / 版本回退等问题 |
