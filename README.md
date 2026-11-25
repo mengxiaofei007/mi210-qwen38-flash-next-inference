@@ -7,6 +7,20 @@
 本项目把「个人机器上能跑」整理成「别人照着也能跑」：所有脚本可单独执行，所有数字来自真实机器采集，
 并明确写出**上限与下限**（能做什么、不能做什么、什么条件下会崩）。
 
+> **关于本仓库内容的生成方式（请务必阅读）**
+>
+> 本仓库的**全部文档与脚本均由 AI 根据作者本机（MI210 工作站）的实际使用过程与测试结果整理生成，
+> 并非由人工逐字编写**。这意味着：
+>
+> - **内容是真实、数据是真实的**：硬件/软件版本、模型文件、显存内存占用、tok/s 性能数据等，
+>   全部来自本机实际运行记录（性能数据来自 DeepSeek Harness 智能体的真实会话日志，见
+>   [benchmarks.md](docs/benchmarks.md)），不是杜撰或估算；
+> - **文档与脚本是 AI 整理的**：表述、结构、脚本封装由 AI 归纳生成，可能有措辞或组织上的不严谨；
+> - **欢迎自测、鼓励验证**：任何人都可以用仓库内的
+>   [`scripts/collect-info.sh`](scripts/collect-info.sh)、[`scripts/preflight.sh`](scripts/preflight.sh)、
+>   [`scripts/verify.sh`](scripts/verify.sh)、[`scripts/benchmark.sh`](scripts/benchmark.sh)
+>   在自己的机器上复现和核对——**以你自己的实测结果为准**。
+
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-ROCm%2Fgfx90a-darkred.svg)](docs/hardware.md)
 [![Status](https://img.shields.io/badge/Status-tested%20on%20MI210-green.svg)](docs/benchmarks.md)
@@ -190,8 +204,11 @@ mi210-qwen38-flash-next-inference/
 
 ## 免责声明
 
-所有配置按「在作者机器上实测可跑」整理。升级 ROCm / torch / llama.cpp 后请重新执行
-`scripts/preflight.sh` 与 `scripts/verify.sh` 验证。**本项目不包含任何鉴权 token / API key**，
-任何实际 key 都只存在于本机 `~/.unsloth/studio/auth/` 中，切勿外传。
+- **AI 生成声明**：如文首所述，本仓库的全部文档与脚本均由 AI 依据作者本机的实际使用与测试记录整理生成，
+  **非人工逐字编写**；所记录的硬件、版本与性能数据均来自真实环境，但文档表述与脚本实现请自行核验，
+  **鼓励并欢迎使用者自测**（相关脚本见文首）。
+- 所有配置按「在作者机器上实测可跑」整理，**不构成任何保证**。升级 ROCm / torch / llama.cpp 后请重新执行
+  `scripts/preflight.sh` 与 `scripts/verify.sh` 验证。
+- **本项目不包含任何鉴权 token / API key**，任何实际 key 都只存在于本机 `~/.unsloth/studio/auth/` 中，切勿外传。
 
 欢迎提 Issue，请附上 `scripts/collect-info.sh` 的输出与硬件/版本信息。
