@@ -1,0 +1,19 @@
+MI210 Qwen3.8-Flash-Next Inference Stack
+Copyright 2026 The mi210-qwen38-flash-next-inference authors
+
+This product includes software developed by third parties. The configuration
+scripts in this repository install and orchestrate the following components,
+which remain under their own licenses:
+
+- Unsloth Studio (https://unsloth.ai) — installed via the official installer
+- llama.cpp / Unsloth fork (https://github.com/ggml-org/llama.cpp,
+  https://github.com/unslothai) — MIT license
+- PyTorch (https://pytorch.org) — BSD-3-Clause
+- ROCm / AMD GPU stack (https://rocm.docs.amd.com) — see AMD license terms
+- Transformers, Triton, PEFT, datasets (Hugging Face / community) — Apache-2.0
+- Model weights: unsloth/Qwen3.8-Flash-Next-GGUF (Hugging Face) — subject to
+  the model card's own license; this repository redistributes no weights.
+
+This repository itself contains only configuration files, scripts, and
+documentation, and is licensed under the Apache License, Version 2.0.
+See LICENSE for the full license text.

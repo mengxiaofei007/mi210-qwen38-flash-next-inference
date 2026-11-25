@@ -1,0 +1,36 @@
+# 密钥 / 鉴权（绝不能进仓库）
+.env
+*.token
+api_key*
+llama_api_key_*
+environment.txt
+*.pem
+*.key
+
+# 模型文件与 HF 缓存（约 200 GB，不入库）
+models/
+*.gguf
+*.gguf_file
+.cache/
+
+# 运行时缓存与日志
+__pycache__/
+*.pyc
+*.log
+nohup.out
+*.db
+*.db-shm
+*.db-wal
+compiled_cache/
+slots/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+*.swp
+.DS_Store
+.scratch/
+
+# 临时
+*.bak.*
+/tmp/
